@@ -34,7 +34,7 @@ const handleSubmit =async (e)=>{
         <div>
             <h1>Signup</h1>
             <form onSubmit={handleSubmit}>
-                <input placeholder="username" name="name" value={formData.name} onChange={handleChange} required/>
+                <input placeholder="email" name="name" value={formData.name} onChange={handleChange} required/>
                 <input placeholder="password" name="password" value={formData.password} onChange={handleChange} required/>
                 <button type="submit"></button>
             </form>
