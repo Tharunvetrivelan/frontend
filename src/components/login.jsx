@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../css/login.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 export default function Login() {
     const navigate = useNavigate();
@@ -43,7 +44,7 @@ export default function Login() {
     <div>
             <h1>Login</h1>
             <form onSubmit={handleLogin}>
-                <input type="email" placeholder="username" name="name" value={formData.name} onChange={handleChange} required/>
+                <input type="email" placeholder="email" name="name" value={formData.name} onChange={handleChange} required/>
                 <input type="password" placeholder="password" name="password" value={formData.password} onChange={handleChange} required/>
                 <button type="submit" disabled={loading}>
     {loading ? "Logging in..." : "Login"}
