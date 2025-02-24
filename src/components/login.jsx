@@ -9,6 +9,7 @@ export default function Login() {
             name:"",
             password:""
         });
+    const [loading, setLoading] = useState(false);
     
         const handleChange =(e)=>{
           setFormData({...formData,[e.target.name]:e.target.value});
@@ -16,30 +17,37 @@ export default function Login() {
       
     const handleLogin = async(e) =>{
         e.preventDefault();
-        try{
-          const response = await axios.post("http://localhost:3000/login",{
-              name:formData.name,
-              password:formData.password
-          });
-          console.log(response);
-          if (response.data.token) {
-            localStorage.setItem("token", response.data.token); // Store token
-            navigate("/home");
+        if(!formData.name || !formData.password){
+          alert("Please fill all the fields");
+          return;
         }
+        setLoading(true);
+        try {
+          const response = await axios.post("http://localhost:3000/login", {
+              name: formData.name,
+              password: formData.password,
+          });
+          if (response.data.token) {
+              Cookies.set("token", response.data.token, { expires: 1 });
+              navigate("/home");
+          }
+      } catch (error) {
+          console.log(error);
+          alert("Failed to login");
+      } finally {
+          setLoading(false);
       }
-      catch(error){
-        console.log(error);
-        alert("failed to login");
-      };
     };
     
   return (
     <div>
             <h1>Login</h1>
             <form onSubmit={handleLogin}>
-                <input placeholder="username" name="name" value={formData.name} onChange={handleChange} required/>
-                <input placeholder="password" name="password" value={formData.password} onChange={handleChange} required/>
-                <button type="submit"></button>
+                <input type="email" placeholder="username" name="name" value={formData.name} onChange={handleChange} required/>
+                <input type="password" placeholder="password" name="password" value={formData.password} onChange={handleChange} required/>
+                <button type="submit" disabled={loading}>
+    {loading ? "Logging in..." : "Login"}
+</button>
             </form>
         </div>
   )
