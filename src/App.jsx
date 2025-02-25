@@ -8,8 +8,10 @@ import StudentForm from './components/StudentForm';
 import EditStudent from './components/EditStudent';
 import StudentDetails from './components/StudentDetails';
 import './App.css';
+import ForgotPassword from './components/forgotPassword.jsx'
+import ResetPassword from "./components/resetPassword.jsx";
 
-import api from './components/api'; 
+
 function App() {
   return (
     <>
@@ -22,7 +24,8 @@ function App() {
         <Route path="/create-student" element={<PrivateRoute><StudentForm /></PrivateRoute>} />
         <Route path="/edit-student/:id" element={<PrivateRoute><EditStudent /></PrivateRoute>} />
         <Route path="/student/:id" element={<PrivateRoute><StudentDetails /></PrivateRoute>} />
-
+        <Route path="/forgotpassword" element={<ForgotPassword/>}/>
+        <Route path="/resetpassword" element={<ResetPassword/>}/>
       </Routes>
     </BrowserRouter>
     </>

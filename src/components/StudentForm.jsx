@@ -25,8 +25,9 @@ function StudentForm() {
         class: Number(student.class),
         marks: Number(student.marks),
       };
-      await api.post('/student', studentData);
-      navigate('/home');
+      const post = await api.post('/student', studentData);
+      alert(post.data.message);
+      
     } catch (error) {
       console.error("Error creating student:", error.response?.data || error.message);
     }

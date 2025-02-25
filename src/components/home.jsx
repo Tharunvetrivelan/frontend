@@ -5,29 +5,29 @@ import api from './api';
 import '../css/home.css';
 
 export default function Home() {
-  const [students, setStudents] = useState([]);
-  const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1); // Initialize totalPages state
-  const limit = 10;
-  const navigate = useNavigate();
+    const [students, setStudents] = useState([]);
+    const [page, setPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1); 
+    const limit = 10;
+    const navigate = useNavigate();
 
-  // Fetch students when the page changes
-  useEffect(() => {
-    api.get(`/student?skip=${(page - 1) * limit}&limit=${limit}`)
-      .then(response => {
-        setStudents(response.data.studentData);
-        setTotalPages(Math.ceil(response.data.totalStudents / limit)); // Update totalPages
-      })
-      .catch(error => console.error(error));
-  }, [page]);
+    // Fetch students when the page changes
+    useEffect(() => {
+      api.get(`/student?skip=${(page - 1) * limit}&limit=${limit}`)
+        .then(response => {           //yen .then podre
+          setStudents(response.data.studentData);
+          setTotalPages(Math.ceil(response.data.totalStudents / limit)); 
+        })
+        .catch(error => console.error(error));
+    }, [page]);
 
-  // Handle logout
+  // find the cookie expiry by logging in after an hour/day
   const handleLogout = () => {
     Cookies.remove("token");
     navigate("/login");
   };
 
-  // Handle student deletion
+  
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this student?")) {
       try {
