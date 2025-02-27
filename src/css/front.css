@@ -1,6 +1,39 @@
-.buttonalignment{
+html,body{
+    overflow-x: hidden;
+}
+.buttonalignment {
     display: flex;
-    justify-content:center;
     gap: 20px;
-};
+    padding: 20px;
+  }
+  
+  .front-button {
+    background-color: lightslategrey; 
+    color: black !important; 
+    border: 2px solid whitesmoke; 
+    font-size: 30px;
+    padding: 30px 150px;
+    cursor: pointer;
+    transition: background 2s ease, box-shadow 2s ease;
+    
+}
 
+.front-button:hover {
+    background: whitesmoke !important; 
+    border-color: white !important;
+    box-shadow: 0 0 5px whitesmoke, 0 0 10px whitesmoke, 0 0 10px whitesmoke !important;
+}
+
+.container{
+    
+    place-self: center;
+    border: 2px solid whitesmoke;
+    padding: 50px;
+    border-radius: 20px;
+    transition: box-shadow 2s ease;
+}
+
+.container:hover{
+    
+    box-shadow: 0 0 5px whitesmoke, 0 0 25px whitesmoke, 0 0 50px whitesmoke !important;
+}

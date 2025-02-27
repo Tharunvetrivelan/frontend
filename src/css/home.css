@@ -1,15 +1,123 @@
-
-.logout-button {
-    background-color: #ff4d4d; 
-    color: white; 
-    border: none; 
-    padding: 10px 20px; 
-    border-radius: 5px; 
-    cursor: pointer; 
-    font-size: 16px; 
-    transition: background-color 0.3s ease; 
+html, body {
+    height: 100% !important;
+    margin: 0 !important;
+    background-color: #141414;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
 }
 
-.logout-button:hover {
-    background-color: #cc0000; 
+.home-container {
+    padding: 0px !important;
+    min-height: 100vh !important;
+    width: 50cm;
+}
+
+.student-list-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    margin-bottom: 20px !important;
+}
+
+.button-group {
+    display: flex !important;
+    justify-content: flex-end !important;
+    align-items: center !important;
+}
+
+    /* {
+        display: flex !important;
+        justify-content: flex-end !important;
+        align-items: center !important;
+        margin-bottom: 20px !important;
+    } */
+
+.logout-button, .create-button {
+    padding: 10px 15px !important;
+    border: none !important;
+    border-radius: 5px !important;
+    cursor: pointer !important;
+    text-decoration: none !important;
+    font-size: 14px !important;
+    margin-left: 10px !important; 
+    background-color: #1890ff; 
+    color: white !important;
+}
+
+.logout-button {
+    background-color: #ff4d4d !important; 
+}
+
+.create-button {
+    background-color: #1890ff !important; /* Blue for Create Student */
+}
+
+/* Student Table Styling */
+.student-table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin-top: 20px !important;
+}
+
+.student-table th, .student-table td {
+    padding: 12px !important;
+    border-bottom: 1px solid #444 !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+}
+
+.student-table th {
+    background: #333 !important;
+    font-weight: bold !important;
+}
+
+.student-link {
+    color: #40a9ff !important;
+    text-decoration: none !important;
+}
+
+.edit-button {
+    color: #ffa940 !important;
+    text-decoration: none !important;
+    margin-right: 10px !important;
+}
+
+.delete-button {
+    background-color: #ff4d4d !important;
+    color: white !important;
+    padding: 5px 10px !important;
+    border: none !important;
+    cursor: pointer !important;
+    border-radius: 5px !important;
+}
+
+.delete-button:hover {
+    background-color: #e63939 !important;
+}
+
+.pagination {
+    margin-top: 20px !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.page-button {
+    background-color: #1890ff !important;
+    color: white !important;
+    padding: 5px 10px !important;
+    border: none !important;
+    cursor: pointer !important;
+    border-radius: 5px !important;
+    margin: 0 5px !important;
+}
+
+.page-button:disabled {
+    background-color: #666 !important;
+    cursor: not-allowed !important;
+}
+
+.page-text {
+    font-size: 16px !important;
+    margin: 0 10px !important;
 }

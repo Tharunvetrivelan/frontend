@@ -1,88 +1,125 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
-import api from './api'; 
-import '../css/home.css';
+import api from './api';
+import { Button, Table, Space, Popconfirm } from 'antd';
+import '../css/home.css'; // Keep your custom CSS for styling
 
 export default function Home() {
     const [students, setStudents] = useState([]);
     const [page, setPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(1); 
+    const [totalPages, setTotalPages] = useState(1);
     const limit = 10;
     const navigate = useNavigate();
 
-    // Fetch students when the page changes
     useEffect(() => {
-      api.get(`/student?skip=${(page - 1) * limit}&limit=${limit}`)
-        .then(response => {           //yen .then podre
-          setStudents(response.data.studentData);
-          setTotalPages(Math.ceil(response.data.totalStudents / limit)); 
-        })
-        .catch(error => console.error(error));
+        api.get(`/student?skip=${(page - 1) * limit}&limit=${limit}`)
+            .then(response => {
+                setStudents(response.data.studentData);
+                setTotalPages(Math.ceil(response.data.totalStudents / limit));
+            })
+            .catch(error => console.error(error));
     }, [page]);
 
-  // find the cookie expiry by logging in after an hour/day
-  const handleLogout = () => {
-    Cookies.remove("token");
-    navigate("/login");
-  };
+    const handleLogout = () => {
+        Cookies.remove("token");
+        navigate("/login");
+    };
 
-  
-  const handleDelete = async (id) => {
-    if (window.confirm("Are you sure you want to delete this student?")) {
-      try {
-        await api.delete(`/student/${id}`);
-        setStudents(prevStudents => prevStudents.filter(student => student._id !== id));
-      } catch (error) {
-        console.error("Error deleting student:", error);
-      }
-    }
-  };
+    const handleDelete = async (id) => {
+        
+            try {
+                await api.delete(`/student/${id}`);
+                setStudents(prevStudents => prevStudents.filter(student => student._id !== id));
+            } catch (error) {
+                console.error("Error deleting student:", error);
+            }
+        
+    };
 
-  return (
-    <div>
-      <h1>Welcome to the Home Page</h1>
-      <button onClick={handleLogout} className="logout-button">
-        Logout
-      </button>
-      <nav>
-        <Link to="/create-student" className="create-button">Create Student</Link>
-      </nav>
-      <h1>Student List</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>Roll Number</th>
-            <th>Name</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {students.map(student => (
-            <tr key={student._id}>
-              <td>
-                <Link to={`/student/${student._id}`}>{student.roleNumber}</Link>
-              </td>
-              <td>
-                <Link to={`/student/${student._id}`}>{student.name}</Link>
-              </td>
-              <td>
-                <Link to={`/edit-student/${student._id}`}>Edit</Link>
-                <button onClick={() => handleDelete(student._id)}>Delete</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <div>
-        <button onClick={() => setPage(prev => Math.max(prev - 1, 1))} disabled={page === 1}>
-          {'<'}
-        </button>
-        <span>Page {page} of {totalPages}</span>
-        <button onClick={() => setPage(prev => Math.min(prev + 1, totalPages))} disabled={page === totalPages}>
-          {'>'}
-        </button>
-      </div>
-    </div>
-  );
+    const columns = [
+        {
+            title: 'Roll Number',
+            dataIndex: 'roleNumber',
+            key: 'roleNumber',
+            render: (text, record) => (
+                <Link to={`/student/${record._id}`} className="student-link">
+                    {text}
+                </Link>
+            ),
+        },
+        {
+            title: 'Name',
+            dataIndex: 'name',
+            key: 'name',
+            render: (text, record) => (
+                <Link to={`/student/${record._id}`} className="student-link">
+                    {text}
+                </Link>
+            ),
+        },
+        {
+            title: 'Actions',
+            key: 'actions',
+            render: (_, record) => (
+                <Space size="middle" className="student-table-actions">
+                    <Link to={`/edit-student/${record._id}`} className="edit-button">
+                        Edit
+                    </Link>
+                    <Popconfirm
+                        title="Are you sure you want to delete this student?"
+                        onConfirm={() => handleDelete(record._id)}
+                        okText="Yes"
+                        cancelText="No"
+                    >
+                        <Button className="delete-button" type="link" danger>
+                            Delete
+                        </Button>
+                    </Popconfirm>
+                </Space>
+            ),
+        },
+    ];
+
+    return (
+        <div className="home-container">
+            <h1 style={{placeSelf:'center',marginTop:'30px'}}>Welcome to the Home Page</h1>
+            <br></br>
+            <header className="student-list-header">
+                <h1>Student List</h1>
+                <div className="button-group">
+                    <button onClick={handleLogout} className="logout-button">
+                        Logout
+                    </button>
+                    <Link to="/create-student" className="create-button">
+                        Create Student
+                    </Link>
+                </div>
+            </header>
+            <Table
+                columns={columns}
+                dataSource={students}
+                rowKey="_id"
+                pagination={false}
+                className="student-table"
+            />
+            <div className="pagination">
+                <Button
+                    onClick={() => setPage(prev => Math.max(prev - 1, 1))}
+                    disabled={page === 1}
+                    className="page-button"
+                >
+                    {'<'}
+                </Button>
+                <span className="page-text">Page {page} of {totalPages}</span>
+                <Button
+                    onClick={() => setPage(prev => Math.min(prev + 1, totalPages))}
+                    disabled={page === totalPages}
+                    className="page-button"
+                >
+                    {'>'}
+                </Button>
+            </div>
+        </div>
+    );
 }

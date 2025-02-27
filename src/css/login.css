@@ -1,0 +1,91 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #141414; 
+    color: #ffffff; 
+}
+
+.login-title {
+    color: white !important;
+}
+
+.login-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    background: #1f1f1f; 
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    width: 380px;
+    text-align: center;
+}
+
+.login-header {
+    margin-bottom: 20px;
+}
+
+.login-text {
+    color: #bfbfbf; 
+}
+
+.login-form .ant-input, .login-form .ant-input-password {
+    padding: 10px;
+    font-size: 16px;
+     
+    border: 1px solid #444;
+    color: white;
+}
+
+.login-form input {
+    color: black !important; 
+}
+
+
+
+
+.login-form .ant-input::placeholder,
+.login-form .ant-input-password::placeholder {
+    color: #8c8c8c;
+}
+
+.login-form .ant-input:hover, .login-form .ant-input-password:hover {
+    border-color: #1890ff;
+}
+
+.forgot-password {
+    float: right;
+    color: #1890ff;
+    cursor: pointer;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+.ant-btn-primary {
+    background-color: #1890ff;
+    border-color: #1890ff;
+    color: white;
+}
+
+.ant-btn-primary:hover {
+    background-color: #40a9ff;
+    border-color: #40a9ff;
+}
+
+.ant-checkbox-wrapper {
+    color: #ffffff;
+}
+
+.ant-checkbox-checked .ant-checkbox-inner {
+    background-color: #1890ff;
+    border-color: #1890ff;
+}

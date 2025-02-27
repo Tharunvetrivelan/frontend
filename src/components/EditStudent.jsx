@@ -1,46 +1,66 @@
-import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import api from './api.js';
+import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { Form, Input, Button, Card, message } from "antd";
+import api from "./api.js";
 
 function EditStudent() {
   const { id } = useParams();
-  const [student, setStudent] = useState({ name: '', roleNumber: '', class: '', gender: '', marks: '' });
   const navigate = useNavigate();
+  const [form] = Form.useForm(); // ✅ Hook to control form values
 
   useEffect(() => {
-    api.get(`/student/${id}`).then(response => setStudent(response.data.existingStudent));
-  }, [id]);
+    api.get(`/student/${id}`)
+      .then(response => {
+        const studentData = response.data.existingStudent;
+        form.setFieldsValue(studentData); // ✅ Update form values when data is fetched
+      })
+      .catch(error => message.error("Error fetching student details!"));
+  }, [id, form]);
 
-  const handleChange = (e) => {
-    setStudent({ ...student, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (values) => {
     try {
       const studentData = {
-        ...student,
-        roleNumber: Number(student.roleNumber),
-        class: Number(student.class),
-        marks: Number(student.marks),
+        ...values,
+        roleNumber: Number(values.roleNumber),
+        class: Number(values.class),
+        marks: Number(values.marks),
       };
       await api.put(`/student/${id}`, studentData);
-      navigate('/home');
+      message.success("Student updated successfully!");
+      navigate("/home");
     } catch (error) {
-      console.error("Error updating student:", error.response?.data || error.message);
+      message.error("Error updating student!");
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" name="name" value={student.name} onChange={handleChange} required />
-      <input type="number" name="roleNumber" value={student.roleNumber} onChange={handleChange} required />
-      <input type="number" name="class" value={student.class} onChange={handleChange} required />
-      <input type="text" name="gender" value={student.gender} onChange={handleChange} required />
-      <input type="number" name="marks" value={student.marks} onChange={handleChange} required />
-      <button type="submit">Update Student</button>
-    </form>
+    <Card title="Edit Student" style={{ width: 400, margin: "50px auto" }}>
+      <Form 
+        form={form} // ✅ Bind form to state
+        layout="vertical"
+        onFinish={handleSubmit}
+      >
+        <Form.Item label="Name" name="name" rules={[{ required: true }]}>
+          <Input />
+        </Form.Item>
+        <Form.Item label="Roll Number" name="roleNumber" rules={[{ required: true }]}>
+          <Input type="number" />
+        </Form.Item>
+        <Form.Item label="Class" name="class" rules={[{ required: true }]}>
+          <Input type="number" />
+        </Form.Item>
+        <Form.Item label="Gender" name="gender" rules={[{ required: true }]}>
+          <Input />
+        </Form.Item>
+        <Form.Item label="Marks" name="marks" rules={[{ required: true }]}>
+          <Input type="number" />
+        </Form.Item>
+        <Button type="primary" htmlType="submit" block>
+          Update Student
+        </Button>
+      </Form>
+    </Card>
   );
 }
 
-export default EditStudent; 
+export default EditStudent;

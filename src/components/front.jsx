@@ -1,20 +1,23 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { Button } from 'antd'; 
 import '../css/front.css';
-function Front(){
+
+function Front() {
     const navigate = useNavigate();
-    return(
-        
-            <div>
-                <h1>Front Page</h1>
-            
+    return (
+        <div className="container">
+            <h1 style={{placeSelf:"center"}}>Front Page</h1>
             <div className="buttonalignment">
-                <button onClick={()=>navigate("/signup")}>signup</button>
-                <button onClick={()=>navigate("/login")}>login</button>
+                <Button onClick={() => navigate("/signup")} className="front-button">
+                Sign Up
+                </Button>
+                <Button  onClick={() => navigate("/login")} className="front-button">
+                Log In
+                </Button>
             </div>
-            
-            </div>
+        </div>
     );
-};
+}
 
 export default Front;

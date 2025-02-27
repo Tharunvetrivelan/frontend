@@ -1,47 +1,81 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import api from './api.js';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Form, Input, Button, Card, message } from "antd";
+import api from "./api.js";
 
 function StudentForm() {
-  const [student, setStudent] = useState({
-    name: '',
-    roleNumber: '',
-    class: '',
-    gender: '',
-    marks: '',
-  });
+  const [form] = Form.useForm();
   const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    setStudent({ ...student, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (values) => {
     try {
       const studentData = {
-        ...student,
-        roleNumber: Number(student.roleNumber),
-        class: Number(student.class),
-        marks: Number(student.marks),
+        ...values,
+        roleNumber: Number(values.roleNumber),
+        class: Number(values.class),
+        marks: Number(values.marks),
       };
-      const post = await api.post('/student', studentData);
-      alert(post.data.message);
-      
+      const response = await api.post("/student", studentData);
+      message.success(response.data.message);
+      form.resetFields(); 
+      navigate("/home");
     } catch (error) {
-      console.error("Error creating student:", error.response?.data || error.message);
+      message.error("Error creating student!");
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" name="name" placeholder="Name" onChange={handleChange} required />
-      <input type="number" name="roleNumber" placeholder="Roll Number" onChange={handleChange} required />
-      <input type="number" name="class" placeholder="Class" onChange={handleChange} required />
-      <input type="text" name="gender" placeholder="Gender" onChange={handleChange} required />
-      <input type="number" name="marks" placeholder="Marks" onChange={handleChange} required />
-      <button type="submit">Create Student</button>
-    </form>
+    <Card title="Create Student" style={{ width:"400px", margin: "50px auto", maxWidth:"400px"}}>
+      <Form 
+        form={form} 
+        layout="vertical"
+        onFinish={handleSubmit}
+      >
+        <Form.Item 
+          label="Name" 
+          name="name" 
+          rules={[{ required: true, message: "Please enter name" }]}
+        >
+          <Input placeholder="Enter student name" />
+        </Form.Item>
+
+        <Form.Item 
+          label="Roll Number" 
+          name="roleNumber" 
+          rules={[{ required: true, message: "Please enter roll number" }]}
+        >
+          <Input type="number" placeholder="Enter roll number" />
+        </Form.Item>
+
+        <Form.Item 
+          label="Class" 
+          name="class" 
+          rules={[{ required: true, message: "Please enter class" }]}
+        >
+          <Input type="number" placeholder="Enter class" />
+        </Form.Item>
+
+        <Form.Item 
+          label="Gender" 
+          name="gender" 
+          rules={[{ required: true, message: "Please enter gender" }]}
+        >
+          <Input placeholder="Enter gender" />
+        </Form.Item>
+
+        <Form.Item 
+          label="Marks" 
+          name="marks" 
+          rules={[{ required: true, message: "Please enter marks" }]}
+        >
+          <Input type="number" placeholder="Enter marks" />
+        </Form.Item>
+
+        <Button type="primary" htmlType="submit" block>
+          Create Student
+        </Button>
+      </Form>
+    </Card>
   );
 }
 

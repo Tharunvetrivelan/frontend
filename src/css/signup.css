@@ -1,0 +1,12 @@
+.signup-container {
+    background: #1f1f1f; 
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    width: 380px;
+    text-align: center;
+}
+.signup-text {
+    color: #bfbfbf !important;
+}
+

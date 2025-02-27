@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import api from './api.js'; 
+import api from './api.js';
+import '../css/forgotpassword.css';
 
 function ForgotPassword() {
   const navigate = useNavigate();
@@ -10,7 +11,7 @@ function ForgotPassword() {
     setData(e.target.value);
   };
 
-  const handleClick = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!data) {
       alert("Enter your Gmail");
@@ -18,8 +19,8 @@ function ForgotPassword() {
     }
     try {
       const response = await api.post('/login/forgot', { email: data });
-      if (response.status === 200) { 
-        navigate('/resetpassword', { state: { email: data } }); 
+      if (response.status === 200) {
+        navigate('/resetpassword', { state: { email: data } });
       }
     } catch (error) {
       console.log("Error:", error);
@@ -32,18 +33,26 @@ function ForgotPassword() {
   };
 
   return (
-    <div>
-      forgot? 😂😂
-      <br />
-      <label htmlFor="existingmail">Enter Mail:</label>
-      <input
-        type="email"
-        value={data} 
-        onChange={handleChange}
-      />
-      <br />
-      <button onClick={handleClick}>Reset password</button>
-    </div>
+    <section className="forgot-section">
+      <div className="forgot-container">
+        <h2 className="forgot-title">Forgot Password</h2>
+        <p className="forgot-text">Enter your email to reset your password.</p>
+        
+        
+        <form onSubmit={handleSubmit}>
+          <input
+            type="email"
+            className="forgot-input"
+            placeholder="Enter your email"
+            value={data}
+            onChange={handleChange}
+            required
+          />
+          <button type="submit" className="forgot-btn">Reset Password</button>
+        </form>
+
+      </div>
+    </section>
   );
 }
 
