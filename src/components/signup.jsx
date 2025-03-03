@@ -44,7 +44,7 @@ function Signup() {
             Create an account to get started!
           </Text>
         </div>
-        <Form layout="vertical" className="signup-form" onSubmitCapture={handleSubmit}>
+        <Form layout="vertical" className="" onSubmitCapture={handleSubmit}>
           <Form.Item name="name" rules={[{ required: true, message: "Please enter your email!" }]}>
             <Input
               prefix={<MailOutlined />}

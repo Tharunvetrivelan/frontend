@@ -6,13 +6,13 @@ import api from "./api.js";
 function EditStudent() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [form] = Form.useForm(); // ✅ Hook to control form values
+  const [form] = Form.useForm(); 
 
   useEffect(() => {
     api.get(`/student/${id}`)
       .then(response => {
         const studentData = response.data.existingStudent;
-        form.setFieldsValue(studentData); // ✅ Update form values when data is fetched
+        form.setFieldsValue(studentData); 
       })
       .catch(error => message.error("Error fetching student details!"));
   }, [id, form]);
@@ -36,7 +36,7 @@ function EditStudent() {
   return (
     <Card title="Edit Student" style={{ width: 400, margin: "50px auto" }}>
       <Form 
-        form={form} // ✅ Bind form to state
+        form={form} 
         layout="vertical"
         onFinish={handleSubmit}
       >
@@ -62,5 +62,6 @@ function EditStudent() {
     </Card>
   );
 }
+
 
 export default EditStudent;

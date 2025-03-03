@@ -45,15 +45,16 @@ export default function Login() {
   };
 
   return (
-    <section className="login-section">
+    <section>
       <div className="login-container">
-        <div className="login-header">
+        <div>
         <Title className="login-title">Log In</Title>
           <Text className="login-text">Welcome back! Enter your details to log in.</Text>
         </div>
-        <Form layout="vertical" className="login-form" onSubmitCapture={handleLogin}>
+        <br></br>
+        <Form layout="vertical" onSubmitCapture={handleLogin}>
           <Form.Item name="name" rules={[{ required: true, message: "Please enter your email!" }]}>
-            <Input className="login-for"
+            <Input className="login-title"
               prefix={<MailOutlined />}
               placeholder="Email"
               name="name"
@@ -63,7 +64,7 @@ export default function Login() {
           </Form.Item>
           <Form.Item name="password" rules={[{ required: true, message: "Please enter your password!" }]}>
             <Input.Password
-             
+              prefix={<LockOutlined />}
               placeholder="Password"
               name="password"
               value={formData.password}

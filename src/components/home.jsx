@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import api from './api';
 import { Button, Table, Space, Popconfirm } from 'antd';
-import '../css/home.css'; // Keep your custom CSS for styling
+import '../css/home.css'; 
 
 export default function Home() {
     const [students, setStudents] = useState([]);
