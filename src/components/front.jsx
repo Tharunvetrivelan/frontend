@@ -5,6 +5,7 @@ import '../css/front.css';
 
 function Front() {
     const navigate = useNavigate();
+    console.log(import.meta.env.VITE_APP_URL)
     return (
         <div className="container">
             <h1 style={{placeSelf:"center"}}>Front Page</h1>

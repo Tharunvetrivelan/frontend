@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+
 import "../css/signup.css";
 import { Button, Form, Input, Typography } from "antd";
 import { MailOutlined, LockOutlined } from "@ant-design/icons";
-
+import api from "./api";
 const { Title, Text } = Typography;
 
 function Signup() {
@@ -21,7 +21,7 @@ function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3000/signup", {
+      const response = await api.post("/signup", {
         name: formData.name,
         password: formData.password,
       });

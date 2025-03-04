@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import "../css/login.css";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import { Button, Checkbox, Form, Input, Typography } from "antd";
 import { LockOutlined, MailOutlined } from "@ant-design/icons";
+import api from "./api";
 
 const { Title, Text } = Typography;
 
@@ -15,7 +15,7 @@ export default function Login() {
     password: "",
   });
   const [loading, setLoading] = useState(false);
-
+  
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -28,7 +28,7 @@ export default function Login() {
     }
     setLoading(true);
     try {
-      const response = await axios.post("http://localhost:3000/login", {
+      const response = await api.post("/login", {
         name: formData.name,
         password: formData.password,
       });
@@ -83,6 +83,9 @@ export default function Login() {
             </Button>
           </Form.Item>
         </Form>
+        <Button onClick={()=> navigate("/signup")}>
+            Sign Up
+        </Button>
       </div>
     </section>
   );
