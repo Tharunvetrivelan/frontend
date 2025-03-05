@@ -12,7 +12,7 @@ function StudentDetails() {
   const [student, setStudent] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
+  useEffect(() => {//
     api.get(`/student/${id}`)
       .then(response => {
         setStudent(response.data.existingStudent);

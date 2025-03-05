@@ -12,7 +12,7 @@ export default function Home() {
     const limit = 10;
     const navigate = useNavigate();
 
-    useEffect(() => {
+    useEffect(() => {//
         api.get(`/student?skip=${(page - 1) * limit}&limit=${limit}`)
             .then(response => {
                 setStudents(response.data.studentData);
@@ -23,7 +23,7 @@ export default function Home() {
 
     const handleLogout = () => {
         Cookies.remove("token");
-        navigate("/login");
+        navigate("/");
     };
 
     const handleDelete = async (id) => {

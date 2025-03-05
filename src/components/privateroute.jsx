@@ -1,24 +1,40 @@
-import { Navigate } from "react-router-dom";
-import { jwtDecode } from "jwt-decode";
-import Cookies from 'js-cookie';
+import { Navigate, useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
+import { useEffect } from "react";
+import api from "./api"; 
+
 const PrivateRoute = ({ children }) => {
-    const token = Cookies.get("token"); 
-    if(!token){
-        return <Navigate to="/login"/>
-    }
-    
-    try{
-        const decoded = jwtDecode(token);
-        const isExpired = decoded.exp * 1000 < Date.now();
-        if(isExpired){
-            Cookies.remove("token");
-            return <Navigate to="/login"/>
-        }
-        return children;
-    }catch(e){
-        Cookies.remove("token");
-        return <Navigate to="/login"/>
-    }
+  const token = Cookies.get("token");
+  const navigate = useNavigate();
+
+    // const validateToken = async () => { 
+    //   try {
+    //     const response = await api.get("/student/validate");
+    //     console.log(response);
+        
+    //   } catch (error) {
+    //     navigate("/", { replace: true });
+    //   }
+    // };
+    // validateToken(); 
+
+  return token ? children : null;
 };
 
 export default PrivateRoute;
+
+// const PrivateRoute = ({ children }) => {
+//     const token = Cookies.get("token");
+//     const navigate = useNavigate();
+  
+//     const validateToken = async () => { 
+//       try {
+//         await api.get("/auth/validate");
+//       } catch (error) {
+//         navigate("/", { replace: true });
+//       }
+//     };
+//     validateToken(); 
+  
+//     return token ? children : <Navigate to="/" replace />;
+//   };

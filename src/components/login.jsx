@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import "../css/login.css";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
-import { Button, Checkbox, Form, Input, Typography } from "antd";
+import { Button, Form, Input, Typography } from "antd"; //removed unwanted import
 import { LockOutlined, MailOutlined } from "@ant-design/icons";
 import api from "./api";
 
-const { Title, Text } = Typography;
+const { Title, Text } = Typography;//destructuring from typography to utilize under different text levels
 
 export default function Login() {
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ export default function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     if (!formData.name || !formData.password) {
-      alert("Please fill all the fields");
+      alert("Please fill all the fields");//
       return;
     }
     setLoading(true);

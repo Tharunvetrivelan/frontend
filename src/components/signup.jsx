@@ -26,7 +26,7 @@ function Signup() {
         password: formData.password,
       });
       if (response) {
-        navigate("/login");
+        navigate("/");
       }
       setFormData({ name: "", password: "" });
     } catch (error) {
