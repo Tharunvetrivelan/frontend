@@ -7,16 +7,23 @@ const PrivateRoute = ({ children }) => {
   const token = Cookies.get("token");
   const navigate = useNavigate();
 
-    // const validateToken = async () => { 
-    //   try {
-    //     const response = await api.get("/student/validate");
-    //     console.log(response);
+  useEffect(() => {
+    if (!token) {
+      navigate("/", { replace: true });
+      return;
+    }
+
+    const validateToken = async () => {
+      try {
+        const response = await api.get("/student/validate");
         
-    //   } catch (error) {
-    //     navigate("/", { replace: true });
-    //   }
-    // };
-    // validateToken(); 
+      } catch (error) {
+        navigate("/", { replace: true });
+      }
+    };
+
+    validateToken();
+  }, [token, navigate]);
 
   return token ? children : null;
 };
