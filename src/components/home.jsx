@@ -148,7 +148,7 @@ export default function Home() {
         rowKey="_id"
         pagination={false}
         className="student-table"
-        locale={{ emptyText: 'No students found' }} // Show message when empty
+        locale={{ emptyText: 'No students found' }} 
       />
       <div className="pagination">
         <Button
