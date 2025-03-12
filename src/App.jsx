@@ -1,28 +1,48 @@
+import '@ant-design/v5-patch-for-react-19';
+import * as React from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Signup from "./components/signup.jsx";
-import Login from "./components/login.jsx";
-import Home from "./components/home.jsx";
-import PrivateRoute from "./components/privateroute.jsx";
-import StudentForm from "./components/StudentForm";
-import EditStudent from "./components/EditStudent";
-import StudentDetails from "./components/StudentDetails";
-import ForgotPassword from "./components/forgotPassword.jsx";
-import ResetPassword from "./components/resetPassword.jsx";
+import Signup from "./pages/signup.jsx";
+import Login from "./pages/login.jsx";
+import Home from "./pages/home.jsx";
+import PrivateRoute from "./pages/privateroute.jsx";
+import StudentForm from "./pages/StudentForm";
+import EditStudent from "./pages/EditStudent";
+import StudentDetails from "./pages/StudentDetails";
+import ForgotPassword from "./pages/forgotPassword.jsx";
+import ResetPassword from "./pages/resetPassword.jsx";
 import "./App.css";
 
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, info) {
+    console.error("Error caught by ErrorBoundary:", error, info.componentStack);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return this.props.fallback || <h1>Something went wrong. Please try again.</h1>;
+    }
+    return this.props.children;
+  }
+}
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        
-        <Route path="/" element={<Login />} />
+      <Route path="/" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/forgotpassword" element={<ForgotPassword />} />
+        <Route path="/forgotPassword" element={<ForgotPassword />} />
         <Route path="/resetpassword" element={<ResetPassword />} />
-
-        
         <Route
-          path="/*" 
+          path="/*"
           element={
             <PrivateRoute>
               <Routes>
@@ -34,7 +54,6 @@ function App() {
             </PrivateRoute>
           }
         />
-        
       </Routes>
     </BrowserRouter>
   );

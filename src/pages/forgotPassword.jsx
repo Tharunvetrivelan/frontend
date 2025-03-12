@@ -2,27 +2,17 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from './api.js';
 import '../css/forgotpassword.css';
-import { Modal } from 'antd';
-
+import Errorbox from '../components/errorbox.jsx';
+import useErrorbox from '../hooks/useErrorBox.jsx';
 function ForgotPassword() {
   const navigate = useNavigate();
   const [data, setData] = useState('');
-  const [errorVisible, setErrorVisible] = useState(false); // State for error Modal
-  const [errorMessage, setErrorMessage] = useState(''); // Store error message
-
+ 
   const handleChange = (e) => {
     setData(e.target.value);
   };
 
-  const showErrorDialog = (message) => {
-    setErrorMessage(message); // Set the message
-    setErrorVisible(true); // Show the Modal
-  };
-
-  const handleErrorOk = () => {
-    setErrorVisible(false); // Close the Modal
-  };
-
+  const {errorVisible,errorMessage,showErrorDialog,handleErrorOk} = useErrorbox();
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!data) {
@@ -60,18 +50,11 @@ function ForgotPassword() {
           />
           <button type="submit" className="forgot-btn">Reset Password</button>
         </form>
-
-        
-        <Modal
-          title="Error"
-          open={errorVisible} 
-          onOk={handleErrorOk}
-          onCancel={handleErrorOk} 
-          okText="OK"
-          cancelButtonProps={{ style: { display: 'none' } }} 
-        >
-          <p>{errorMessage}</p>
-        </Modal>
+        <Errorbox
+    visible={errorVisible}
+    message={errorMessage}
+    onClose={handleErrorOk}
+  />
       </div>
     </section>
   );

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../css/login.css";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
-import { Button, Form, Input, Typography } from "antd"; //removed unwanted import
+import { Button, Form, Input, Typography, message } from "antd"; //removed unwanted import
 import { LockOutlined, MailOutlined } from "@ant-design/icons";
 import api from "./api";
 
@@ -23,7 +23,7 @@ export default function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     if (!formData.name || !formData.password) {
-      alert("Please fill all the fields");//
+
       return;
     }
     setLoading(true);
@@ -38,7 +38,8 @@ export default function Login() {
       }
     } catch (error) {
       console.log(error);
-      alert("Failed to login");
+     message.error("Login Failed, Invalid credentials")
+      
     } finally {
       setLoading(false);
     }
@@ -58,6 +59,7 @@ export default function Login() {
               prefix={<MailOutlined />}
               placeholder="Email"
               name="name"
+              type="email"
               value={formData.name}
               onChange={handleChange}
             />

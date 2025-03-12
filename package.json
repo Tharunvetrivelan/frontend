@@ -11,6 +11,8 @@
     "preview": "vite preview --mode production"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.6.1",
+    "@ant-design/v5-patch-for-react-19": "^1.0.3",
     "antd": "^5.24.2",
     "axios": "^1.7.9",
     "js-cookie": "^3.0.5",
