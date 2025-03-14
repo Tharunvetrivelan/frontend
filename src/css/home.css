@@ -9,7 +9,8 @@ html, body {
 .home-container {
     padding: 0px !important;
     min-height: 100vh !important;
-    width: 50cm;
+    width: calc(97vw);
+    height: calc(100vh);
 }
 
 .student-list-header {
@@ -25,23 +26,15 @@ html, body {
     align-items: center !important;
 }
 
-    /* {
-        display: flex !important;
-        justify-content: flex-end !important;
-        align-items: center !important;
-        margin-bottom: 20px !important;
-    } */
-
 .logout-button, .create-button {
-    padding: 10px 15px !important;
-    border: none !important;
-    border-radius: 5px !important;
-    cursor: pointer !important;
-    text-decoration: none !important;
-    font-size: 14px !important;
-    margin-left: 10px !important; 
-    background-color: #1890ff; 
-    color: white !important;
+    padding: 6px 15px ;
+    border: none ;
+    border-radius: 5px ;
+    cursor: pointer ;
+    text-decoration: none ;
+    font-size: 14px ;
+    margin-left: 10px ; 
+    color: white;
 }
 
 .logout-button {
@@ -49,10 +42,10 @@ html, body {
 }
 
 .create-button {
-    background-color: #1890ff !important; /* Blue for Create Student */
+    background-color: #1890ff !important; 
 }
 
-/* Student Table Styling */
+
 .student-table {
     width: 100% !important;
     border-collapse: collapse !important;
@@ -77,9 +70,12 @@ html, body {
 }
 
 .edit-button {
-    color: #ffa940 !important;
-    text-decoration: none !important;
-    margin-right: 10px !important;
+    color: #ffa940;
+    background-color:azure !important;
+    padding: 4px 10px !important;
+    border: none !important;
+    cursor: pointer !important;
+    border-radius: 5px !important;
 }
 
 .delete-button {

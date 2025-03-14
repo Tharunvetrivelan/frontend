@@ -20,7 +20,7 @@ function StudentForm() {
       form.resetFields(); 
       navigate("/home");
     } catch (error) {
-      message.error("Error creating student!");
+      message.error("Donot repeat existing credentials");
     }
   };
 

@@ -10,7 +10,10 @@ import EditStudent from "./pages/EditStudent";
 import StudentDetails from "./pages/StudentDetails";
 import ForgotPassword from "./pages/forgotPassword.jsx";
 import ResetPassword from "./pages/resetPassword.jsx";
+import INFINITESCROLL from './pages/InfiniteScroll.jsx';
 import "./App.css";
+
+
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -46,10 +49,11 @@ function App() {
           element={
             <PrivateRoute>
               <Routes>
-                <Route path="home" element={<Home />} />
-                <Route path="create-student" element={<StudentForm />} />
-                <Route path="edit-student/:id" element={<EditStudent />} />
-                <Route path="student/:id" element={<StudentDetails />} />
+                <Route path="/home" element={<Home />} />
+                <Route path="/create-student" element={<StudentForm />} />
+                <Route path="/edit-student/:id" element={<EditStudent />} />
+                <Route path="/student/:id" element={<StudentDetails />} />
+                <Route path="/infiniteScroll" element={<INFINITESCROLL/>} />
               </Routes>
             </PrivateRoute>
           }

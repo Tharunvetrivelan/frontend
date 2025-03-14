@@ -1,0 +1,49 @@
+.space {
+ display: inline !important;   
+}
+.header{
+    display: inline;
+}
+.infinite-container{
+    padding: 0px ;
+    min-height: 100vh ;
+    width: calc(99vw);
+    height: calc(100vh);
+    overflow: scrollx;
+   
+}
+
+.body{
+    background-color:black;
+}
+
+.rollnumber span {
+  display: block;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    width: 100%;
+    padding: 10px 20px; 
+}
+
+.button-container {
+    display: flex;
+    
+    gap: 10px;
+}
+
+
+.editor-container{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.grid-layout{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 100px 100px;
+}
