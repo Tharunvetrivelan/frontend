@@ -126,7 +126,7 @@ export default function Home() {
       <h1 style={{ placeSelf: 'center', marginTop: '30px' }}>Welcome to the Home Page</h1>
       <br />
       <header className="student-list-header">
-        <h1>Student List</h1>
+        <h1>Orphan List</h1>
         <div className="button-group">
           <Input
             placeholder="Search by roll number or name"

@@ -11,7 +11,10 @@ import StudentDetails from "./pages/StudentDetails";
 import ForgotPassword from "./pages/forgotPassword.jsx";
 import ResetPassword from "./pages/resetPassword.jsx";
 import INFINITESCROLL from './pages/InfiniteScroll.jsx';
+import HomePage from './pages/HomePage.jsx';
 import "./App.css";
+import AdoptionForm from './pages/AdoptionForm.jsx';
+
 
 
 
@@ -40,7 +43,9 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-      <Route path="/" element={<Login />} />
+      <Route path="/" element={<HomePage />} />
+      <Route path="/adoption" element={<AdoptionForm />} />  
+      <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/forgotPassword" element={<ForgotPassword />} />
         <Route path="/resetpassword" element={<ResetPassword />} />
