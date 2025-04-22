@@ -40,30 +40,33 @@ class ErrorBoundary extends React.Component {
   }
 }
 function App() {
+  const location = window.location.pathname;
   return (
     <BrowserRouter>
-      <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/adoption" element={<AdoptionForm />} />  
-      <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/forgotPassword" element={<ForgotPassword />} />
-        <Route path="/resetpassword" element={<ResetPassword />} />
-        <Route
-          path="/*"
-          element={
-            <PrivateRoute>
-              <Routes>
-                <Route path="/home" element={<Home />} />
-                <Route path="/create-student" element={<StudentForm />} />
-                <Route path="/edit-student/:id" element={<EditStudent />} />
-                <Route path="/student/:id" element={<StudentDetails />} />
-                <Route path="/infiniteScroll" element={<INFINITESCROLL/>} />
-              </Routes>
-            </PrivateRoute>
-          }
-        />
-      </Routes>
+      <div data-route={location}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/adoption" element={<AdoptionForm />} />  
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/forgotPassword" element={<ForgotPassword />} />
+          <Route path="/resetpassword" element={<ResetPassword />} />
+          <Route
+            path="/*"
+            element={
+              <PrivateRoute>
+                <Routes>
+                  <Route path="/home" element={<Home />} />
+                  <Route path="/create-student" element={<StudentForm />} />
+                  <Route path="/edit-student/:id" element={<EditStudent />} />
+                  <Route path="/student/:id" element={<StudentDetails />} />
+                  <Route path="/infiniteScroll" element={<INFINITESCROLL/>} />
+                </Routes>
+              </PrivateRoute>
+            }
+          />
+        </Routes>
+      </div>
     </BrowserRouter>
   );
 }

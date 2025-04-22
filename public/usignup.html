@@ -1,0 +1,361 @@
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>HOPE HAVEN</title>
+
+  <!--owl slider stylesheet -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+  <!-- fonts awesome style -->
+  <link href="css/font-awesome.min.css" rel="stylesheet" />
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Poppins:400,500,700&display=swap" rel="stylesheet" />
+
+  <!-- Custom styles for this template -->
+  <link href="css/style1.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive1.css" rel="stylesheet" />
+
+  <style>
+    .contact_section {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 50px 0;
+      backdrop-filter: blur(10px);
+    }
+
+    .contact-form {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .heading_container h2 {
+      color: #fff;
+      font-size: 2.5em;
+      text-align: center;
+      margin-bottom: 30px;  
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="date"] {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      transition: all 0.3s ease;
+    }
+
+    input::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    input:focus {
+      background: rgba(255, 255, 255, 0.2);
+      outline: none;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    }
+
+    .file-upload-section {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 20px;
+      border-radius: 10px;
+      margin: 20px 0;
+    }
+
+    .file-upload-section label {
+      color: #fff;
+      display: block;
+      margin: 10px 0;
+      font-weight: 500;
+    }
+
+    .btn-box button {
+      background: linear-gradient(45deg, #1890ff, #36b9ff);
+      color: white;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .btn-box button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(24, 144, 255, 0.4);
+    }
+
+    .top_input {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+  </style>
+</head>
+
+<body style="background-image: url(images/donations-bg.jpg);">
+  <div class="hero_area">
+    <header class="header_section">
+      <!-- <div class="contact_nav_container">
+        <div class="heading_container">
+          <div class="contact_nav">
+            <ul class="nav-menu">
+              <li>home</li>
+              <li>why us</li>
+              <li>devs</li>
+              <li>contact us</li>
+              <li>join</li>
+            </ul>
+            <button class="navbar-toggler">Toggle</button>
+          </div>
+        </div>
+      </div> -->
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container">
+          <div class="custom_menu-btn">
+            <button onclick="openNav()">
+              <span class="s-1"> </span>
+              <span class="s-2"> </span>
+              <span class="s-3"> </span>
+            </button>
+          </div>
+          <div id="myNav" class="overlay">
+            <div class="menu_btn-style ">
+              <button onclick="closeNav()">
+                <span class="s-1"> </span>
+                <span class="s-2"> </span>
+                <span class="s-3"> </span>
+              </button>
+            </div>
+            <div class="overlay-content">
+              <a class="active" href="index.html"> Home <span class="sr-only">(current)</span></a>
+              <a class="" href="about.html"> About</a>
+              <a class="" href="why.html"> Why Us </a>
+              <a class="" href="trainer.html"> Our Team</a>
+              <a class="" href="contact.html"> Contact Us</a>
+            </div>
+          </div>
+          <a class="navbar-brand" href="ulogin.html">
+            <span>
+              HOPE HAVEN
+            </span>
+          </a>
+          <div class="care_detail" >
+            
+            
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+    <!-- slider section -->
+    <section class="slider_section position-relative">
+      <div id="customCarousel1" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#customCarousel1" data-slide-to="0" class="active"></li>
+          <li data-target="#customCarousel1" data-slide-to="1"></li>
+        </ol>
+        <div class="carousel-inner">
+          <!-- First carousel item with a different background image -->
+          <div class="carousel-item active" style="background-image: url('images/slider-bg1.jpg');background-repeat: no-repeat;background-size: cover;">
+            <div class="box">
+              <div class="baby_detail">
+                <div class="baby_text">
+                  <h2>
+                    GENUINE <br />
+                    NECESSITY DONATION
+                  </h2>
+                </div>
+                <a href="">
+                  Donate
+                </a>
+              </div>
+              <div class="care_detail">
+                <a href="#Form">
+                  FORM
+                </a>
+                <div class="care_text">
+                  <h2>
+                   Register <br />
+                    for <br />
+                    adoption
+                  </h2>
+                </div>
+              </div>
+            </div>
+          </div>
+    
+    
+          <!-- Third carousel item with a different background image -->
+          <div class="carousel-item" style="background-image: url('images/slider-bg3.jpg');background-repeat: no-repeat;background-size: cover">
+            <div class="box">
+              <div class="baby_detail">
+                <div class="baby_text">
+                  <h2>
+                    HEALTHY <br />
+                    FOOD DONATION
+                  </h2>
+                </div>
+                <a href="">
+                  Read More
+                </a>
+              </div>
+              <div class="care_detail">
+                <a href="">
+                  DATA GOVERNANCE
+                </a>
+                <div class="care_text">
+                  <h2>
+                    We will take <br />
+                    Care of <br />
+                    your Baby
+                  </h2>
+                </div>
+              </div>
+            </div>
+          </div>
+    
+        
+    
+        </div>
+      </div>
+    </section>
+    
+    <!-- end slider section -->
+  </div>
+
+
+
+  <section class="contact_section layout_padding-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <div class="contact-form">
+                    <div class="heading_container">
+                        <h2>Adoption Application Form</h2>
+                    </div>
+                    <form id="Form" enctype="multipart/form-data">
+                        <input type="text" name="fullName" placeholder="Full Name" required />
+                        <div class="top_input">
+                            <input type="email" name="email" placeholder="Email Address" required />
+                            <input type="text" name="phoneNumber" placeholder="Phone Number" required />
+                        </div>
+                        <input type="date" name="dateOfBirth" required />
+                        <input type="text" name="address" placeholder="Complete Address" class="message_input" required />
+                        
+                        <div class="file-upload-section">
+                          <h3 style="color: white; margin-bottom: 20px;">Required Documents</h3>
+                          <label for="aadhaarCard">Aadhaar Card</label>
+                          <input type="file" id="aadhaarCard" name="aadhaarCard" accept=".jpg, .jpeg, .png, .pdf" />
+                          <label for="passport">Passport</label>
+                          <input type="file" id="passport" name="passport" accept=".jpg, .jpeg, .png, .pdf" />
+                          <label for="voterID">Voter ID</label>
+                          <input type="file" id="voterID" name="voterID" accept=".jpg, .jpeg, .png, .pdf" />
+                          <label for="drivingLicense">Driving License</label>
+                          <input type="file" id="drivingLicense" name="drivingLicense" accept=".jpg, .jpeg, .png, .pdf" />
+                          <label for="panCard">PAN Card</label>
+                          <input type="file" id="panCard" name="panCard" accept=".jpg, .jpeg, .png, .pdf" />
+                          <label for="birthCertificate">Birth Certificate</label>
+                          <input type="file" id="birthCertificate" name="birthCertificate" accept=".jpg, .jpeg, .png, .pdf" />
+                          <label for="marriageCertificate">Marriage Certificate (if applicable)</label>
+                          <input type="file" id="marriageCertificate" name="marriageCertificate" accept=".jpg, .jpeg, .png, .pdf" />
+                        </div>
+                        
+                        <input type="text" name="adoptionConsent" placeholder="I consent to the adoption process (Type YES)" required />
+                        
+                        <div class="btn-box">
+                            <button type="submit">Submit Application</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div id="data-container">
+    <table id="adoption-table">
+        <thead>
+            <tr>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Date of Birth</th>
+                <th>Address</th>
+                <th>Adoption Consent</th>
+                <th>Documents</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+    </table>
+</div> -->
+
+<script>
+    // Submit form data to backend
+    document.getElementById('Form').addEventListener('submit', async function (e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+
+        try {
+            const response = await fetch("http://localhost:3001/submit-adoption", {
+                method: "POST",
+                body: formData,
+            });
+
+            // if (response.ok) {
+                alert("Form submitted successfully!");
+                // fetchAdoptionData(); // Refresh the table data
+                // this.reset(); // Reset the form
+            // } else {
+            //     alert("Error submitting the form.");
+            // }
+        } catch (err) {
+            console.error("Error submitting form:", err);
+            alert("Error submitting the form.");
+        }
+    });
+
+
+    // window.onload = fetchAdoptionData;
+</script>
+  <br>
+  
+  <footer class="footer_section container-fluid">
+    <p>
+      &copy; <span id="displayYear"></span> All Rights Reserved. Design by
+      <a href="https://html.design/">Tharun Velan hahahahah</a>
+    </p>
+  </footer>
+  <!-- footer section -->
+
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  <script src="js/custom.js"></script>
+</body>
+</html>

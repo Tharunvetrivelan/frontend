@@ -123,8 +123,8 @@ export default function Home() {
 
   return (
     <div className="home-container">
-      <h1 style={{ placeSelf: 'center', marginTop: '30px' }}>Welcome to the Home Page</h1>
-      <br />
+      <h1 style={{ placeSelf: 'center'}}>Welcome to the Home Page</h1>
+      
       <header className="student-list-header">
         <h1>Orphan List</h1>
         <div className="button-group">
