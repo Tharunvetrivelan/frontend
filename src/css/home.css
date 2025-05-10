@@ -1,15 +1,242 @@
-
-.logout-button {
-    background-color: #ff4d4d; 
-    color: white; 
-    border: none; 
-    padding: 10px 20px; 
-    border-radius: 5px; 
-    cursor: pointer; 
-    font-size: 16px; 
-    transition: background-color 0.3s ease; 
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); filter: blur(5px); }
+    to { opacity: 1; transform: translateY(0); filter: blur(0); }
 }
 
-.logout-button:hover {
-    background-color: #cc0000; 
+@keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(77, 121, 255, 0.4); }
+    70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(77, 121, 255, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(77, 121, 255, 0); }
+}
+
+:root {
+    --bg-gradient: linear-gradient(135deg, #0f0f1f 0%, #1a1a2e 100%) !important;
+    --glass-bg: rgba(255, 255, 255, 0.07) !important;
+    --glass-border: rgba(255, 255, 255, 0.1) !important;
+    --primary-gradient: linear-gradient(135deg, #4d79ff 0%, #3366ff 100%) !important;
+    --danger-gradient: linear-gradient(135deg, #ff4d4d 0%, #ff3333 100%) !important;
+    --text-color: #ffffff !important;
+    --border-radius: 16px !important;
+    --transition-speed: 0.4s !important;
+}
+
+/* Reset and global styles */
+html, body {
+    margin-top: -1cm;
+    background: var(--bg-gradient) !important;
+    color: var(--text-color) !important;
+    font-family: var(--font-family) !important;
+    -webkit-font-smoothing: antialiased !important;
+    
+    overflow-x: hidden !important;
+}
+
+.home-container {
+    /* padding: 24px !important; */
+    height: 100vh!important;
+    width: 99.5vw;
+    animation: fadeIn 0.8s ease-out !important;
+    backdrop-filter: blur(20px) !important;
+    background: var(--glass-bg) !important;
+    border-radius: var(--border-radius) !important;
+    border: 1px solid var(--glass-border) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+}
+
+.student-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px; /* modern gap */
+    align-items: center;
+}
+
+.logout-button, .create-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 14px;
+    color: var(--text-color);
+    transition: transform var(--transition-speed);
+    backdrop-filter: blur(10px) !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2),
+                inset 0 1px 1px rgba(255, 255, 255, 0.1) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    background: var(--primary-gradient) !important;
+    border: 1px solid var(--glass-border) !important;
+}
+
+.logout-button {
+    background: var(--danger-gradient) !important;
+}
+
+.create-button {
+    background-color: var(--primary-color);
+}
+
+.logout-button:hover, .create-button:hover {
+    transform: translateY(-3px) scale(1.05) !important;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3) !important;
+}
+
+.student-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3) !important;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    animation: fadeIn 1s ease-out !important;
+    backdrop-filter: blur(20px) !important;
+    background: var(--glass-bg) !important;
+    border: 1px solid var(--glass-border) !important;
+}
+
+.student-table th, .student-table td {
+    padding: 16px;
+    text-align: center;
+}
+
+.student-table th {
+    background: rgba(255, 255, 255, 0.05) !important;
+    font-weight: bold;
+    border-bottom: 2px solid var(--glass-border) !important;
+    letter-spacing: 1px !important;
+}
+
+.student-table td {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03) !important;
+}
+
+.student-table tr {
+    transition: background 0.3s ease !important;
+}
+
+.student-table tr:hover {
+    background: rgba(255,255,255,0.05) !important;
+}
+
+.student-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    position: relative !important;
+    transition: all 0.3s ease !important;
+}
+
+.student-link:after {
+    content: '' !important;
+    position: absolute !important;
+    width: 0 !important;
+    height: 2px !important;
+    bottom: -2px !important;
+    left: 0 !important;
+    background-color: var(--primary-color) !important;
+    transition: width 0.3s ease !important;
+}
+
+.student-link:hover:after {
+    width: 100% !important;
+}
+
+.edit-button {
+    color: #fff !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    padding: 6px 12px;
+    border: none;
+    cursor: pointer;
+    border-radius: var(--border-radius);
+    transition: background var(--transition-speed);
+    backdrop-filter: blur(5px) !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    border: 1px solid var(--glass-border) !important;
+}
+.edit-button:hover {
+    background: var(--primary-gradient) !important;
+    color: var(--text-color);
+    animation: pulse 1s infinite !important;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3) !important;
+    transform: translateY(-2px) !important;
+}
+
+.delete-button {
+    background: var(--danger-gradient) !important;
+    color: #fff!important;
+    padding: 6px 12px;
+    border: none;
+    cursor: pointer;
+    border-radius: var(--border-radius);
+    transition: transform var(--transition-speed);
+    backdrop-filter: blur(5px) !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    border: 1px solid rgba(255, 77, 77, 0.3) !important;
+}
+.delete-button:hover {
+    transform: scale(1.05);
+    animation: pulse 1s infinite !important;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3) !important;
+}
+
+.pagination {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 1.2s ease-out !important;
+}
+
+.page-button {
+    background: var(--primary-gradient) !important;
+    color: #fff;
+    padding: 8px 14px;
+    border: none;
+    cursor: pointer;
+    border-radius: var(--border-radius);
+    transition: background var(--transition-speed);
+    backdrop-filter: blur(10px) !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    border: 1px solid var(--glass-border) !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.5px !important;
+}
+
+.page-button:hover:not(:disabled) {
+    background-color: var(--primary-color-dark);
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3) !important;
+}
+
+.page-button:disabled {
+    background-color: #666;
+    cursor: not-allowed;
+}
+
+.page-text {
+    font-size: 16px;
+    margin: 0 10px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px !important;
+    background: transparent !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2) !important;
+    border-radius: 4px !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3) !important;
 }

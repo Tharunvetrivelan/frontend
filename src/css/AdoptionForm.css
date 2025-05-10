@@ -1,0 +1,110 @@
+AdoptionForm.css
+
+
+
+
+/* Additional custom styles */
+.adoption-page {
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.contact_section form {
+  margin-bottom: 2rem;
+}
+
+.contact_section input[type="file"] {
+  margin-bottom: 1rem;
+}
+
+.contact_section label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.alert-success {
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+
+.alert-danger {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+
+.adoption-container {
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+
+
+.form_section {
+  padding: 60px 0;
+}
+
+.adoption_form {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-control {
+  border: 1px solid #ddd;
+  padding: 12px;
+  border-radius: 5px;
+}
+
+.btn-primary {
+  background-color: #1890ff;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+
+
+.navbar-brand span {
+  color: #1890ff;
+  font-weight: bold;
+}
+
+.nav-link {
+  color: #333;
+  margin: 0 15px;
+}
+
+.footer_section {
+  background-color: #333;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.footer_section a {
+  color: #1890ff;
+  text-decoration: none;
+}
